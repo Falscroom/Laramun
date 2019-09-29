@@ -1,14 +1,14 @@
 <template>
     <div class="gallery-row">
         <div class="photoswipe-gallery no-gutters" v-bind:class="{invisible: isDisabled}" ref="gallery" itemscope itemtype="http://schema.org/ImageGallery">
-            <div class="col-lg-3 col-md-4 col-6 pr-2 pl-2 grid-sizer"></div>
             <div v-for="(item) in images" class="col-lg-3 col-md-4 col-6 pr-2 pl-2 grid-item">
                 <figure class="photoswipe-gallery__item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                     <a :href=item.image itemprop="contentUrl" :data-size="item.width + 'x' + item.height">
-                        <img  :src=item.preview class="responsive-img photoswipe-gallery__item__image" itemprop="thumbnail" alt="Image description" />
+                        <img  :src=item.preview class="responsive-img item-image" itemprop="thumbnail" alt="Image description" />
                     </a>
                 </figure>
             </div>
+            <div class="col-lg-3 col-md-4 col-6 pr-2 pl-2 grid-sizer"></div>
         </div>
     </div>
 </template>
@@ -53,7 +53,7 @@
         width: 100%;
         &__item {
             width: 100%;
-            &__image {
+            .item-image {
                 width: 100%;
             }
         }

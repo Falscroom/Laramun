@@ -20,6 +20,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('header-component', require('./components/header-component/HeaderComponent.vue').default);
+Vue.component('news-component', require('./components/news-component/PieceOfNewsComponent').default);
 Vue.component('photoswipe-gallery', require('./components/photoswipe-gallery/PhotoswipeGallery.vue').default);
 
 /**

@@ -44,10 +44,11 @@ class MunrfePost extends Model
 {
     use Resizable;
 
-    /**
-     * @var array
-     */
-    private $dimensions;
+    /** @var string */
+    const PREVIEW_NAME = 'preview';
+
+    /** @var array */
+    protected $dimensions;
 
     /**
      * @return array

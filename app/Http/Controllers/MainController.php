@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MunrfePost;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,7 +14,9 @@ class MainController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index() {
-        $posts = Post::latest()->take(3)->get();
+        /** @var MunrfePost[] $posts */
+        $posts = Post::latest()->take(6)->get();
+
         return view('main',[
             'posts' => $posts
         ]);

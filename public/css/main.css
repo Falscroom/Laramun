@@ -14,6 +14,9 @@ a, a:hover {
     text-decoration: none;
     color: inherit;
 }
+.grid-sizer {
+    z-index: -1; !important;
+}
 /*article:hover {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     background-color: #fafafa;
@@ -46,30 +49,6 @@ a, a:hover {
 }
 /* *********************************************
 ******************HEAD************************
- **********************************************/
-
-/* *********************************************
-******************NEWS SECTION******************
- **********************************************/
-.card, .card > img {
-    background-color: inherit;
-    border: none;
-    border-radius: 0;
-}
-.post-link-wrapper {
-
-}
-.card-date {
-    font-size: 0.7em;
-}
-.card-body {
-    padding: 0 0 20px 0;
-}
-.card-title {
-    font-size: 1.2em;
-}
-/* *********************************************
-******************NEWS SECTION******************
  **********************************************/
 
 /* *********************************************
@@ -153,15 +132,12 @@ a, a:hover {
     .second-title {
         font-size: 1.2em;
     }
-    .card-title, .partner-text, .contacts-link, .more-text {
+    .partner-text, .contacts-link, .more-text {
         font-size: 1em;
-    }
-    .card-text {
-        font-size: 0.9em;
     }
 }
 @media (max-width: 767.98px) {
-    .card-title, .partner-text, .contacts-link, .more-text {
+    .partner-text, .contacts-link, .more-text {
         font-size: 0.9em;
     }
 }

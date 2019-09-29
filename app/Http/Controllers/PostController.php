@@ -4,22 +4,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Entity\GalleryImage;
+use App\Http\Services\PostService;
 use App\MunrfePost;
 use App\MunrfePost as Post;
 use TCG\Voyager\Voyager;
 
 class PostController
 {
-    /** @var Voyager */
-    protected $voyager;
+    /** @var PostService */
+    protected $postService;
 
     /**
      * PostController constructor.
-     * @param Voyager $voyager
+     * @param PostService $postService
      */
-    public function __construct(Voyager $voyager)
+    public function __construct(PostService $postService)
     {
-        $this->voyager = $voyager;
+        $this->postService = $postService;
     }
 
     /**
@@ -29,17 +30,9 @@ class PostController
     public function index($id) {
         /** @var MunrfePost $post */
         $post = Post::find($id);
-        $galleryDimensions = $post->getDimensions();
-        foreach (json_decode($post->gallery) as $key => $item) {
-            $gallery[] = new GalleryImage(
-                $this->voyager->image($item),
-                $this->voyager->image($post->getThumbnail($item,'preview')),
-                $galleryDimensions[$key]
-            );
-        }
         return view('post', [
             'post' => $post,
-            'gallery' => $gallery ?? []
+            'gallery' => $this->postService->prepareGallery($post)
         ]);
     }
 

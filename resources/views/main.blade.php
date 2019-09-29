@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    @inject('postService', 'App\Http\Services\PostService')
     <header-component
         image="{{ asset('/images/main_image.jpg') }}"
         title="Model United Nations of the Russian Far East"
@@ -14,27 +15,16 @@
             <div class="col"><hr></div>
         </div>
 
-        <div class="row">
+        <div class="row" id="news-grid">
             @foreach ($posts as $post)
-                <div class="col-sm-12 col-md-12 col-lg-4">
-                    <a class="post-link-wrapper" href="{{ route('post', ['id' => $post->id]) }}">
-                        <article class="card">
-                            <img src="{{ Voyager::image($post->thumbnail('preview') ) }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <div class="card-date">
-                                    {{ $post->created_at }}
-                                </div>
-                                <h2 class="card-title" style="margin-top: 10px">
-                                    {{ $post->title }}
-                                </h2>
-                                <p class="card-text">
-                                    {!! substr(strip_tags($post->content),0,600) !!}{{strlen(strip_tags($post->content)) > 600 ? "..." : "" }}
-                                </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
+                <news-component
+                    href="{{ route('post', ['id' => $post->id]) }}"
+                    image="{{ $postService->preparePreview($post) }}"
+                    title="{{ $post->title }}"
+                    content="{{ $postService->prepareContent($post) }}"
+                ></news-component>
             @endforeach
+            <div class="col-sm-12 col-md-12 col-lg-4 grid-sizer"></div>
         </div>
 
         <div class="more-container">
@@ -93,4 +83,17 @@
             <span class="more-text">All partners</span>
         </div>
     </section>
+@endsection
+
+@section('javascript')
+    <script>
+        const newsSection = document.getElementById('news-grid');
+        imagesLoaded(newsSection, function () {
+            const masonry = new Masonry(newsSection, {
+                itemSelector: '.grid-item',
+                percentPosition: true,
+                columnWidth: '.grid-sizer'
+            });
+        });
+    </script>
 @endsection
