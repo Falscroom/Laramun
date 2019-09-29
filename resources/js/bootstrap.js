@@ -15,7 +15,10 @@ try {
     window.imagesLoaded = require('imagesloaded');
 
     require('bootstrap');
-} catch (e) {}
+} catch (e) {
+    console.log("can't install js dependencies");
+    console.log(e);
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
