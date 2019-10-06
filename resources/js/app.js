@@ -19,9 +19,10 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('header-component', require('./components/header-component/HeaderComponent.vue').default);
-Vue.component('news-component', require('./components/news-component/PieceOfNewsComponent').default);
-Vue.component('photoswipe-gallery', require('./components/photoswipe-gallery/PhotoswipeGallery.vue').default);
+Vue.component('header-component', require('./components/header/header.vue').default);
+Vue.component('news-component', require('./components/news/pieceOfNews').default);
+Vue.component('partner-component', require('./components/partner/partner.vue').default);
+Vue.component('photoswipe-gallery-component', require('./components/photoswipe-gallery/photoswipeGallery.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <photoswipe-gallery :images="{{ json_encode($gallery) }}"></photoswipe-gallery>
+    <photoswipe-gallery-component :images="{{ json_encode($gallery) }}"></photoswipe-gallery-component>
 
     <div class="spacer"></div>
     @include('photoswipe-layout')

@@ -48,9 +48,6 @@ ul, ol {
     transition: .22s ease;
 }
 
-
-
-
 body {
     font-family: Montserrat, Roboto, serif;
     color: #001630;
@@ -69,6 +66,14 @@ a, a:hover {
 }
 .grid-sizer {
     z-index: -1; !important;
+}
+
+.dropdown-menu {
+    background-color: #f8fafc;
+}
+
+.dropdown-item:hover {
+    background-color: #eceef0;
 }
 /*article:hover {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -107,21 +112,6 @@ a, a:hover {
 /* *********************************************
 ******************CONTACTS SECTION**************
  **********************************************/
-.contacts-link {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #001630;
-
-    word-break: break-all;
-    word-wrap: break-word;
-    white-space: normal;
-    padding-bottom: 15px;
-}
-.contacts-logo-image {
-    width: 100%;
-    max-width: 70px;
-    margin-bottom: 15px;
-}
 .contacts-group-image {
     max-width: 100%;
 }
@@ -185,12 +175,12 @@ a, a:hover {
     .second-title {
         font-size: 1.2em;
     }
-    .partner-text, .contacts-link, .more-text {
+    .partner-text, .more-text {
         font-size: 1em;
     }
 }
 @media (max-width: 767.98px) {
-    .partner-text, .contacts-link, .more-text {
+    .partner-text, .more-text {
         font-size: 0.9em;
     }
 }

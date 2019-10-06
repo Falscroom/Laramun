@@ -22,10 +22,7 @@
             }
         },
         props: {
-            images: {
-                type: Array,
-                default: []
-            }
+            images: Array
         },
         mounted() {
             let current = this;

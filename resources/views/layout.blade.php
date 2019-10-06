@@ -24,38 +24,13 @@
             </div>
         </div>
         <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
-            <ul class="navbar-nav ml-auto flex-nowrap">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">MUNRFE</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">About us</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Other projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Contact us</a>
-                </li>
-            </ul>
+            {{ menu('main', 'main-menu') }}
         </div>
     </nav>
     <hr/>
     <main id="app">
         @yield('content')
     </main>
-
-
-
         <script src="{{ asset('/js/app.js') }}"></script>
         @yield('javascript')
 </div>
@@ -99,12 +74,12 @@
             </div>
         </div>
     </div>
-    <div class="row no-gutters social-container">
+{{--    <div class="row no-gutters social-container">
         <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
         <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
         <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
         <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
-    </div>
+    </div>--}}
 </footer>
 
 </html>

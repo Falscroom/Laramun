@@ -9,7 +9,11 @@
 
 <script>
     export default {
-        props:['image', 'title', 'additional_class'],
+        props: {
+            image: String,
+            title: String,
+            additional_class: String
+        },
     }
 </script>
 

@@ -41,23 +41,15 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="{{ asset('/images/vk.svg') }}" class="contacts-logo-image"/>
-                    </div>
-                    <div class="col-10 flex-center">
-                        <a href="#" class="contacts-link">www.vk.com/munrfeasdasdasdasdasdasdasd</a>
-                    </div>
-                </div>
+                <partner-component
+                    image="{{ asset('/images/vk.svg') }}"
+                    link="www.vk.com/munrfe"
+                ></partner-component>
 
-                <div class="row">
-                    <div class="col-2">
-                        <img src="{{ asset('/images/insta.svg') }}" class="contacts-logo-image"/>
-                    </div>
-                    <div class="col-10 flex-center">
-                        <a href="#" class="contacts-link">www.instagram.com/munrfe</a>
-                    </div>
-                </div>
+                <partner-component
+                    image="{{ asset('/images/insta.svg') }}"
+                    link="www.instagram.com/munrfe"
+                ></partner-component>
             </div>
             <div class="col-6 d-none d-md-none d-lg-block" id="contacts-image-container" >
                 <img src="{{ asset('/images/group.jpg') }}" class="contacts-group-image"/>
