@@ -46,7 +46,6 @@
     @import '../../../sass/_breakpoints.scss';
 
     .photoswipe-gallery {
-        margin-top: 50px;
         width: 100%;
         &__item {
             width: 100%;

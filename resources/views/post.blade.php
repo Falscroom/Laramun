@@ -3,10 +3,12 @@
 
     <header-component
         image="{{ Voyager::image($post->image ) }}"
-        title="{{ $post->title }}" >
+        title="{{ $post->title }}"
+        additional_class="centered-image"
+    >
     </header-component>
 
-    <section style="margin-top: 30px">
+    <section class="section-divider">
         <div class="card-text">
             {!! $post->content !!}
         </div>

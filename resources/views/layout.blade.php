@@ -10,30 +10,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MUNRFE</title>
 </head>
-<body>
-<div class="container">
-    <nav class="navbar navbar-expand-lg bg-transparent">
-        <div class="d-flex flex-grow-1">
-            <a class="navbar-brand" href="#">
-                <a  href="{{ route('main') }}"><img id="navbar-image" src="{{ asset('/images/Logo.svg') }}" alt="munrfe main logo"></a>
-            </a>
-            <div class="w-100 text-right">
-                <button class="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
-                    &#9776;
-                </button>
+<body id="body">
+    <div class="container" id="main-container">
+        <nav class="navbar navbar-expand-lg bg-transparent">
+            <div class="d-flex flex-grow-1">
+                <a class="navbar-brand" href="#">
+                    <a  href="{{ route('main') }}"><img id="navbar-image" src="{{ asset('/images/Logo.svg') }}" alt="munrfe main logo"></a>
+                </a>
+                <div class="w-100 text-right">
+                    <button class="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
+                        &#9776;
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
-            {{ menu('main', 'main-menu') }}
-        </div>
-    </nav>
-    <hr/>
-    <main id="app">
-        @yield('content')
-    </main>
-        <script src="{{ asset('/js/app.js') }}"></script>
-        @yield('javascript')
-</div>
+            <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
+                {{ menu('main', 'main-menu') }}
+            </div>
+        </nav>
+        <hr/>
+        <main id="app">
+            @yield('content')
+        </main>
+            <script src="{{ asset('/js/app.js') }}"></script>
+            @yield('javascript')
+    </div>
 </body>
 
 <footer class="section footer-classic context-dark bg-image" style="background: #2d3246; padding-top: 20px; margin-top: 30px">
@@ -74,12 +74,12 @@
             </div>
         </div>
     </div>
-{{--    <div class="row no-gutters social-container">
-        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
-        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
-        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
-        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
-    </div>--}}
+    {{--    <div class="row no-gutters social-container">
+            <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+            <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+            <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
+            <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
+        </div>--}}
 </footer>
 
 </html>

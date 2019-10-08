@@ -15,6 +15,12 @@ Route::get('/', ['as' => 'main', 'uses' => 'MainController@index']);
 
 Route::get('post/{id}', ['as' => 'post', 'uses' => 'PostController@index']);
 
+Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@index']);
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

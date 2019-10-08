@@ -27,10 +27,11 @@ class PostController
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index($id) {
+    public function index($id)
+    {
         /** @var MunrfePost $post */
         $post = Post::find($id);
-        return view('post', [
+        return view('auth', [
             'post' => $post,
             'gallery' => $this->postService->prepareGallery($post)
         ]);

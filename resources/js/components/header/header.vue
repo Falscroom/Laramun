@@ -21,6 +21,11 @@
     @import '../../../sass/_breakpoints.scss';
 
     .header-component {
+        .centered-image {
+            img {
+                margin-top: -15%;
+            }
+        }
         &__title {
             font-size: 2em;
             text-align: center;
@@ -36,9 +41,10 @@
         &__wrapper {
             max-height: 350px;
             overflow: hidden;
-        }
-        &__image {
-            width: 100%;
+
+            .header-component__image {
+                width: 100%;
+            }
         }
     }
 </style>
