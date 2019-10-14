@@ -2,7 +2,6 @@
 
 namespace App;
 
-use phpDocumentor\Reflection\Types\Integer;
 use TCG\Voyager\Traits\Resizable;
 use Illuminate\Database\Eloquent\Model;
 

@@ -13,7 +13,7 @@ class MainController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
+    public function index(\Request $request)
     {
         /** @var MunrfePost[] $posts */
         $posts = Post::latest()->take(6)->get();

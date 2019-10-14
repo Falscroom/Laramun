@@ -19,8 +19,8 @@ Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@i
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::get('test','Admin\Test@index')->middleware('admin.user');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
