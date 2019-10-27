@@ -31,7 +31,7 @@ class PostController
     {
         /** @var MunrfePost $post */
         $post = Post::find($id);
-        return view('auth', [
+        return view('post', [
             'post' => $post,
             'gallery' => $this->postService->prepareGallery($post)
         ]);

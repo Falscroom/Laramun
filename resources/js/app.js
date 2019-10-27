@@ -21,7 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('header-component', require('./components/header/header.vue').default);
 Vue.component('news-component', require('./components/news/pieceOfNews').default);
-Vue.component('partner-component', require('./components/partner/partner.vue').default);
+Vue.component('contact-component', require('./components/contact/contact.vue').default);
 Vue.component('photoswipe-gallery-component', require('./components/photoswipe-gallery/photoswipeGallery.vue').default);
 
 /**

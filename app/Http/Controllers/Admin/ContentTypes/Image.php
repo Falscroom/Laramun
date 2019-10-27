@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\ContentTypes;
 
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Constraint;
@@ -10,7 +11,14 @@ use TCG\Voyager\Http\Controllers\ContentTypes\BaseType;
 
 class Image extends BaseType
 {
+    /** @var string */
     protected $path;
+    /** @var null|int */
+    protected $resize_width = null;
+    /** @var null|int */
+    protected $resize_height = null;
+    /** @var null|int */
+    protected $resize_quality;
 
     public function handle()
     {
@@ -26,38 +34,14 @@ class Image extends BaseType
 
             $filename = mb_substr($file->getClientOriginalName(),0,strpos($file->getClientOriginalName(),'.'));
 
-            $image = InterventionImage::make($file);
-
             $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
 
-            $resize_width = null;
-            $resize_height = null;
-            if (isset($this->options->resize) && (
-                    isset($this->options->resize->width) || isset($this->options->resize->height)
-                )) {
-                if (isset($this->options->resize->width)) {
-                    $resize_width = $this->options->resize->width;
-                }
-                if (isset($this->options->resize->height)) {
-                    $resize_height = $this->options->resize->height;
-                }
+            if ($file->getClientOriginalExtension() == 'svg') {
+                Storage::disk(config('voyager.storage.disk'))->put($fullPath, file_get_contents($file), 'public');
+                return $fullPath;
             } else {
-                $resize_width = $image->width();
-                $resize_height = $image->height();
+                $image = $this->resizeImage($file);
             }
-
-            $resize_quality = isset($this->options->quality) ? intval($this->options->quality) : 75;
-
-            $image = $image->resize(
-                $resize_width,
-                $resize_height,
-                function (Constraint $constraint) {
-                    $constraint->aspectRatio();
-                    if (isset($this->options->upsize) && !$this->options->upsize) {
-                        $constraint->upsize();
-                    }
-                }
-            )->encode($file->getClientOriginalExtension(), $resize_quality);
 
             if ($this->is_animated_gif($file)) {
                 Storage::disk(config('voyager.storage.disk'))->put($fullPath, file_get_contents($file), 'public');
@@ -71,8 +55,8 @@ class Image extends BaseType
                 foreach ($this->options->thumbnails as $thumbnails) {
                     if (isset($thumbnails->name) && isset($thumbnails->scale)) {
                         $scale = intval($thumbnails->scale) / 100;
-                        $thumb_resize_width = $resize_width;
-                        $thumb_resize_height = $resize_height;
+                        $thumb_resize_width = $this->resize_width;
+                        $thumb_resize_height = $this->resize_height;
 
                         if (isset($thumbnails->resize)) {
                             $thumb_resize_width = null;
@@ -103,13 +87,13 @@ class Image extends BaseType
                                     $constraint->upsize();
                                 }
                             }
-                        )->encode($file->getClientOriginalExtension(), $resize_quality);
+                        )->encode($file->getClientOriginalExtension(), $this->resize_quality);
                     } elseif (isset($thumbnails->crop->width) && isset($thumbnails->crop->height)) {
                         $crop_width = $thumbnails->crop->width;
                         $crop_height = $thumbnails->crop->height;
                         $image = InterventionImage::make($file)
                             ->fit($crop_width, $crop_height)
-                            ->encode($file->getClientOriginalExtension(), $resize_quality);
+                            ->encode($file->getClientOriginalExtension(), $this->resize_quality);
                     }
 
                     Storage::disk(config('voyager.storage.disk'))->put(
@@ -122,6 +106,42 @@ class Image extends BaseType
 
             return $fullPath;
         }
+    }
+
+    /**
+     * @param UploadedFile $file
+     * @return \Intervention\Image\Image
+     */
+    protected function resizeImage(UploadedFile $file)
+    {
+        $image = InterventionImage::make($file);
+
+        if (isset($this->options->resize) && (
+                isset($this->options->resize->width) || isset($this->options->resize->height)
+            )) {
+            if (isset($this->options->resize->width)) {
+                $this->resize_width = $this->options->resize->width;
+            }
+            if (isset($this->options->resize->height)) {
+                $this->resize_height = $this->options->resize->height;
+            }
+        } else {
+            $this->resize_width = $image->width();
+            $this->resize_height = $image->height();
+        }
+
+        $this->resize_quality = isset($this->options->quality) ? intval($this->options->quality) : 75;
+
+        return $image->resize(
+            $this->resize_width,
+            $this->resize_height,
+            function (Constraint $constraint) {
+                $constraint->aspectRatio();
+                if (isset($this->options->upsize) && !$this->options->upsize) {
+                    $constraint->upsize();
+                }
+            }
+        )->encode($file->getClientOriginalExtension(), $this->resize_quality);
     }
 
     /**

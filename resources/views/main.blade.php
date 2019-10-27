@@ -41,15 +41,12 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6">
-                <partner-component
-                    image="{{ asset('/images/vk.svg') }}"
-                    link="www.vk.com/munrfe"
-                ></partner-component>
-
-                <partner-component
-                    image="{{ asset('/images/insta.svg') }}"
-                    link="www.instagram.com/munrfe"
-                ></partner-component>
+                @foreach ($contacts as $contact)
+                    <contact-component
+                        image="{{ Voyager::image($contact->image) }}"
+                        link="{{ $contact->value }}"
+                    ></contact-component>
+                @endforeach
             </div>
             <div class="col-6 d-none d-md-none d-lg-block" id="contacts-image-container" >
                 <img src="{{ asset('/images/group.jpg') }}" class="contacts-group-image"/>

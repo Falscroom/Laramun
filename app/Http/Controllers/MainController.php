@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\MunrfePost as Post;
+use App\Meta;
 
 class MainController extends BaseController
 {
@@ -17,9 +18,21 @@ class MainController extends BaseController
     {
         /** @var MunrfePost[] $posts */
         $posts = Post::latest()->take(6)->get();
+        $meta = Meta::where('route', $request::path())
+            ->where('type', 'contact')
+            ->orWhere('type', 'partner')
+            ->get();
+
+        foreach ($meta as $item) {
+            if (in_array($type = $item->type, Meta::VIEW_TYPES)) {
+                $partnersContacts[$type][] = $item;
+            }
+        }
 
         return view('main',[
-            'posts' => $posts
+            'posts' => $posts,
+            'partners' => $partnersContacts['partner'] ?? [],
+            'contacts' => $partnersContacts['contact'] ?? []
         ]);
     }
 }

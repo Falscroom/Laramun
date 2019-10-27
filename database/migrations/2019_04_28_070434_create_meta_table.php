@@ -17,6 +17,7 @@ class CreateMetaTable extends Migration
             $table->bigIncrements('id');
             $table->string('route');
             $table->string('type');
+            $table->string('image');
             $table->longText('value');
             $table->timestamps();
         });
