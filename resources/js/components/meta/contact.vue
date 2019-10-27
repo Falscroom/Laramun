@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: "Contact",
+        name: "contact",
         props: {
             image: String,
             link: String

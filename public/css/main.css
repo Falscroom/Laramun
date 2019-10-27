@@ -141,24 +141,6 @@ a, a:hover {
 .contacts-container > div {
     margin-top: 10px;
 }
-/* *********************************************
-******************CONTACTS SECTION**************
- **********************************************/
-
-/* *********************************************
-******************PARTNERS SECTION**************
- **********************************************/
-.partner-image {
-    max-width: 100%;
-}
-.partner-text {
-    font-weight: 600;
-    text-align: center;
-    font-size: 1.2em;
-}
-/* *********************************************
-******************PARTNERS SECTION**************
- **********************************************/
 
 /* *********************************************
 ******************SERVICE************************
@@ -195,12 +177,12 @@ a, a:hover {
     .second-title {
         font-size: 1.2em;
     }
-    .partner-text, .more-text {
+    .more-text {
         font-size: 1em;
     }
 }
 @media (max-width: 767.98px) {
-    .partner-text, .more-text {
+    .more-text {
         font-size: 0.9em;
     }
 }
