@@ -55,7 +55,7 @@ class MetaAdminController extends VoyagerBaseController
             if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
                 $query = $model->{$dataType->scope}();
             } else {
-                $query = $model::where('type', 'partner')->orWhere('type', 'contact');
+                $query = $model::where('type', 'partner')->orWhere('type', 'contact')->orderby('type');
             }
 
             // Use withTrashed() if model uses SoftDeletes and if toggle is selected

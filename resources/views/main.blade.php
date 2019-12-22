@@ -16,19 +16,19 @@
         </div>
 
         <div class="row" id="news-grid">
-            @foreach ($posts as $post)
+            @foreach ($posts as $item)
                 <news-component
-                    href="{{ route('post', ['id' => $post->id]) }}"
-                    image="{{ $postService->preparePreview($post) }}"
-                    title="{{ $post->title }}"
-                    content="{{ $postService->prepareContent($post) }}"
+                    href="{{ route('post', ['id' => $item->id]) }}"
+                    image="{{ $postService->preparePreview($item) }}"
+                    title="{{ $item->title }}"
+                    content="{{ $postService->prepareContent($item) }}"
                 ></news-component>
             @endforeach
             <div class="col-sm-12 col-md-12 col-lg-4 grid-sizer"></div>
         </div>
 
         <div class="more-container">
-            <span class="more-text">All news</span>
+            <a class="more-text" href="{{ route('news') }}">All news</a>
         </div>
     </section>
 
@@ -44,7 +44,8 @@
                 @foreach ($contacts as $contact)
                     <contact-component
                         image="{{ Voyager::image($contact->image) }}"
-                        link="{{ $contact->value }}"
+                        link="{{ $contact->link }}"
+                        title="{{ $contact->value }}"
                     ></contact-component>
                 @endforeach
             </div>
@@ -61,12 +62,15 @@
             <div class="col"><hr></div>
         </div>
 
-        @foreach ($partners as $partner)
-            <partner-component
-                image="{{ Voyager::image($partner->image) }}"
-                text="{{ $partner->value }}"
-            ></partner-component>
-        @endforeach
+        <div class="row">
+            @foreach ($partners as $partner)
+                <partner-component
+                    image="{{ Voyager::image($partner->image) }}"
+                    link="{{ $partner->link }}"
+                    title="{{ $partner->value }}"
+                ></partner-component>
+            @endforeach
+        </div>
     </section>
 @endsection
 

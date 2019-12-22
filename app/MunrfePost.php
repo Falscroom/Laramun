@@ -49,6 +49,9 @@ class MunrfePost extends Model
     /** @var array */
     protected $dimensions;
 
+    /** @var User */
+    protected $user;
+
     /**
      * @return array
      */
@@ -58,5 +61,23 @@ class MunrfePost extends Model
             $this->dimensions = json_decode($this->gallery_dimensions);
         }
         return $this->dimensions;
+    }
+
+    /**
+     * @param User $user
+     * @return self
+     */
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

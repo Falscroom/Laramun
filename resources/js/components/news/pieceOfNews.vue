@@ -10,7 +10,7 @@
                     <h2 class="card-title" style="margin-top: 10px">
                         {{ title }}
                     </h2>
-                    <p class="card-text">
+                    <p class="card-text" v-html="content">
                         {{ content }}
                     </p>
                 </div>

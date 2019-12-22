@@ -19,6 +19,7 @@ class MunrfePostAdminController extends VoyagerBaseController
     */
     public function insertUpdateData($request, $slug, $rows, $model)
     {
+        $model->user_id = auth()->user()->getAuthIdentifier();
         $realPath = Storage::disk(config('voyager.storage.disk'))->getDriver()->getAdapter()->getPathPrefix();
         foreach ($rows as $row) {
             $content = $this->getContentBasedOnType($request, $slug, $row, $row->details);

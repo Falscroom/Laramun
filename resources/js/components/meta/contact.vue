@@ -4,7 +4,7 @@
             <img class="contacts-logo-image" :src=image alt="Contact logo">
         </div>
         <div class="col-10 flex-center">
-            <a href="#" class="contacts-link"> {{ link }}</a>
+            <a :href="'//' + link" class="contacts-link"> {{ title }}</a>
         </div>
     </div>
 </template>
@@ -14,7 +14,8 @@
         name: "contact",
         props: {
             image: String,
-            link: String
+            link: String,
+            title: String
         }
     }
 </script>

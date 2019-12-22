@@ -1,9 +1,9 @@
 <template>
-    <div class="row">
-        <div class="col-12 col-sm-4 col-md-3 partner">
+    <div class="col-12 col-sm-4 col-md-3 partner">
+        <a :href="'//' + link">
             <img :src=image class="partner-image" alt="partner image">
-            <p class="partner-text">{{ text }}</p>
-        </div>
+            <p class="partner-text">{{ title }}</p>
+        </a>
     </div>
 </template>
 
@@ -12,7 +12,8 @@
         name: "partner",
         props: {
             image: String,
-            text: String
+            link: String,
+            title: String,
         }
     }
 </script>

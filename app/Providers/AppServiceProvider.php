@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use App\Http\Controllers\Admin\Core\VoyagerBaseController as LocalBaseController;
+use App\Http\Controllers\Admin\Core\MenuController as LocalMenuController;
+use TCG\Voyager\Http\Controllers\VoyagerBaseController;
+use TCG\Voyager\Http\Controllers\VoyagerMenuController;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(LocalBaseController::class, VoyagerBaseController::class);
+        $this->app->bind(VoyagerBaseController::class, LocalBaseController::class);
+        $this->app->bind(VoyagerMenuController::class, LocalMenuController::class);
 
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);

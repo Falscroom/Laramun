@@ -18,7 +18,8 @@ class CreateMetaTable extends Migration
             $table->string('route');
             $table->string('type');
             $table->string('image');
-            $table->longText('value');
+            $table->string('link');
+            $table->string('value');
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ class CreateTable extends Migration
             $table->longText('content');
             $table->longText('gallery');
             $table->longText('gallery_dimensions');
+            $table->boolean('secured');
 
             /*foreign keys*/
             $table->unsignedBigInteger('type_id')->nullable(true);
